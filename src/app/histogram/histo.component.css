@@ -1,0 +1,38 @@
+::ng-deep .histo-d3 {
+  font: 10px sans-serif;
+  background-color: steelblue;
+  text-align: right;
+  padding: 3px;
+  margin: 1px;
+  color: white;
+}
+
+::ng-deep path {  stroke: #fff; }
+::ng-deep path:hover {  opacity:0.9; }
+::ng-deep rect:hover {  fill:blue; }
+::ng-deep .axis {  font: 10px sans-serif; }
+::ng-deep .legend tr{    border-bottom:1px solid grey; }
+::ng-deep .legend tr:first-child{    border-top:1px solid grey; }
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.x.axis path {  display: none; }
+::ng-deep .legend{
+  margin-bottom:76px;
+  display:inline-block;
+  border-collapse: collapse;
+  border-spacing: 0px;
+}
+::ng-deep .legend td{
+  padding:4px 5px;
+  vertical-align:bottom;
+}
+::ng-deep .legendFreq, ::ng-deep .legendPerc{
+  align:right;
+  width:50px;
+}
