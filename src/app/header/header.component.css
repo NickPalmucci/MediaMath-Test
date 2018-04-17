@@ -1,0 +1,11 @@
+.header {
+  font-family: "Helvetica Neue";
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.header img {
+  max-height: 150px;
+  max-width: 150px;
+}
