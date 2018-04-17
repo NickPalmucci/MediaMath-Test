@@ -12,10 +12,11 @@ export class ChartsService {
     // this code is adapted from http://bl.ocks.org/NPashaP/96447623ef4d342ee09b
 
     let barColor = 'steelblue';
+
     function segColor(c){ return {
       "price/portion ratio":"indianred",
       remainder:"lightgray",
-      "calories/portion ratio": "steelblue"}[c];
+      "calories/portion ratio": "#f1b265"}[c];
     }
 
     // function to handle histogram.
@@ -59,7 +60,12 @@ export class ChartsService {
         .on("mouseout", mouseout);// mouseout is defined below.
 
       // Create the labels above the rectangles.
-      bars.append("text").text(function(d){ return d3.format(",")(d[1]) +" oz"})
+      bars.append("text").text(function(d){
+        if (d[0] == 'Popsicles and bars' && d[1] === 1) {
+          return d3.format(",")(d[1]) + " count"
+        }
+        return d3.format(",")(d[1]) +" oz"
+      })
         .attr("x", function(d) { return x(d[0])+x.bandwidth()/2; })
         .attr("y", function(d) { return y(d[1])-5; })
         .attr("text-anchor", "middle");
@@ -71,21 +77,22 @@ export class ChartsService {
         let nD = [{type: "price/portion ratio", ratio: st.pricePortionRatio},
           {type: "remainder", ratio: 1-st.pricePortionRatio}];
 
-        let nD2 =[{type: "calories/portion ratio", ratio: st.caloriesPortionRatio}]
+        let nD2 =[{type: "calories/portion ratio", ratio: st.caloriesPortionRatio}];
 
         let selectedCalRatio = fData.filter(function(s){return s.Food == d[0]})[0].caloriesPortionRatio;
         let histoTwoData = [[d[0], selectedCalRatio]];
 
         // call update functions of pie-chart and legend.
         pC.update(nD);
-        hG2.update(histoTwoData, 'steelblue');
+        hG2.update(histoTwoData, '#f1b265');
         leg.update(nD);
         leg2.update(nD2);
       }
 
       function mouseout(d){    // utility function to be called on mouseout.
         // reset the pie-chart and legend.
-        hG2.update(sF2, 'steelblue');
+
+        hG2.update(sF2, '#f1b265');
         pC.update(tF);
         leg.update(tF);
       }
@@ -107,9 +114,12 @@ export class ChartsService {
         // transition the data labels location and change value.
         bars.select("text").transition().duration(500)
           .text(function(d){
-            if (d[1] > 1) {
+            if (d[0] == 'Popsicles and bars' && d[1] === 1) {
+              return d3.format(",")(d[1]) + " count"
+            } else if (d[1] >= 0.8 && d[1] < 10) {
               return d3.format(",")(d[1]) + " oz"
             }
+
             return d3.format(",")(d[1])
           })
           .attr("y", function(d) {return y(d[1])-5; });
@@ -152,14 +162,20 @@ export class ChartsService {
       function mouseover(d){
         // call the update function of histogram with new data.
         hGa.update(fData.map(function(v){
-          return [v.Food, v.pricePortionRatio]}), segColor(d.data.type));
+          return [v.Food, v.pricePortionRatio]}), 'indianred');
+        hGb.update(fData.map(function(v){
+          return [v.Food, v.pricePortionRatio]}), 'indianred');
+        hGc.update(fData.map(function(v){
+          return [v.Food, v.pricePortionRatio]}), 'indianred');
       }
 
       //Utility function to be called on mouseout a pie slice.
       function mouseout(d){
         // call the update function of histogram with all data.
-        hGa.update(fData.map(function(v){
-          return [v.Food,v.portionSize];}), barColor);
+        hGa.update(firstSlice, barColor);
+        hGb.update(secondSlice, barColor);
+        hGc.update(thirdSlice, barColor);
+
       }
 
       // Animating the pie-slice requiring a custom function which specifies
@@ -249,13 +265,36 @@ export class ChartsService {
         .attr("y", function(d) { return y(d[1]); })
         .attr("width", x.bandwidth())
         .attr("height", function(d) { return hGDim.h - y(d[1]); })
-        .attr('fill','steelblue');
+        .attr('fill','#f1b265')
+        .on("mouseover", mouseover)
+        .on("mouseout", mouseout);
 
       // Create the labels above the rectangles.
       bars.append("text").text(function(d){ return d3.format(",")(d[1])})
         .attr("x", function(d) { return x(d[0])+x.bandwidth()/2; })
         .attr("y", function(d) { return y(d[1])-5; })
         .attr("text-anchor", "middle");
+
+
+
+      function mouseover(d) {
+        const fullHistoTwoData = fData.map(function(d){return [d.Food, d.caloriesPortionRatio];});
+        const firstHg2 = fullHistoTwoData.slice(0, 7);
+        const secondHg2 = fullHistoTwoData.slice(7, 14);
+        const thirdHg2 = fullHistoTwoData.slice(14);
+
+        hGa.update(firstHg2, '#f1b265');
+        hGb.update(secondHg2, '#f1b265');
+        hGc.update(thirdHg2, '#f1b265');
+
+
+      }
+
+      function mouseout(d){
+        hGa.update(firstSlice, barColor);
+        hGb.update(secondSlice, barColor);
+        hGc.update(thirdSlice, barColor);
+      }
 
 
       // create function to update the bars. This will be used by pie-chart.
