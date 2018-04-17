@@ -1,0 +1,27 @@
+<div class="card">
+
+  <app-header></app-header>
+
+  <h4 class="explanation">The portion sizes of the items in this study are displayed below. Hover over an item
+    to see the price per portion ratio and calories per portion ratio displayed by the charts in the upper-right panel.
+    Hover over the charts in the panel to see the ratio for the set of items below.
+  </h4>
+
+  <div class="btnCont">
+    <p (click)="show('fruit')" class="btn">Show Fruits</p>
+    <p (click)="show('snacks')" class="btn">Show Snacks</p>
+  </div>
+
+  <div *ngIf="showFruit"><app-fruits></app-fruits></div>
+  <div *ngIf="showSnacks"><app-snacks></app-snacks></div>
+
+  <div class="info">
+    <p>*Items marked with an asterisk (*) use 1/2-cup-equivalent as the portion size. </p>
+    <p>Portion size for fruits and vegetables is the larger of (a) average amount consumed by children 6-13 years of age who reported consuming the Examination Survey (NHANES) or (b) 1/2 cup-equivalent consumed. Unless otherwise noted, item is consumed raw, from fresh.</p>
+    <p>Price per portion is calculated by ERS using data from Nielsen's 2010 Homescan panel.</p>
+    <a href="http://www.ars.usda.gov/Services/docs.htm?docid=22808">http://www.ars.usda.gov/Services/docs.htm?docid=22808</a>
+    <p>Portion size for snacks is the average amount consumed by children 6-13 years of age who reported consuming the food in the 2005-08 National Health and Nutrition Examination Survey (NHANES).</p>
+    <p>For popsicles and bars, a "portion" is one count.</p>
+    <p>Source: Calculated by ERS, USDA from the 2005-08 NHANES, Nielsen's 2010 Homescan panel data, and USDA's National Nutrient Database for Standard Reference. </p>
+  </div>
+</div>
