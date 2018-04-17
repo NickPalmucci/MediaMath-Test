@@ -1,5 +1,8 @@
 # Nick Palmucci - Analytics Engineering Interview Task #1
 
+##Usage
+`npm install` then angular-cli should take if from there
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
