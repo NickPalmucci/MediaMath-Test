@@ -33,7 +33,7 @@
 
 ::ng-deep path {  stroke: #fff; }
 ::ng-deep path:hover {  opacity:0.9; }
-::ng-deep rect:hover {  fill:blue; }
+::ng-deep rect:hover {  fill:skyblue; }
 ::ng-deep .axis {  font: 10px sans-serif; }
 ::ng-deep .legend tr{    border-bottom:1px solid grey; }
 ::ng-deep .legend tr:first-child{    border-top:1px solid grey; }
