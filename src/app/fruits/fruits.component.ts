@@ -22,15 +22,12 @@ export class FruitsComponent implements OnInit {
     this.d3 = d3Service.getD3();
     this.data = dataService.getData('/fruits');
     this.charts = chartsService;
-
   }
 
   loadCharts(): any {
-    return this.data.subscribe((x: string) => {
-      Promise.resolve(JSON.parse(x)).then(data => {
-        this.fruitData = data;
-        this.charts.getCharts(this.d3, this.fruitData);
-      });
+    return this.data.subscribe((data: object) => {
+      this.fruitData = data;
+      this.charts.getCharts(this.d3, this.fruitData);
     });
 
   }
