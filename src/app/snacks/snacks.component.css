@@ -1,0 +1,58 @@
+.fixedCont {
+  padding: 2px;
+  position: fixed;
+  top: -38px;
+  right: 75px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  background-color: white;
+  -webkit-box-shadow: 4px 18px 36px -9px rgba(0,0,0,0.75);
+  -moz-box-shadow: 4px 18px 36px -9px rgba(0,0,0,0.75);
+  box-shadow: 4px 18px 36px -9px rgba(0,0,0,0.75);
+
+}
+
+.chartsCont {
+  display: flex;
+  flex-direction: row;
+}
+
+.legCont {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.pieChart {
+  padding-top: 50px;
+}
+
+#stretch .legendFreq  {
+  padding-left: 25px;
+}
+
+::ng-deep path {  stroke: #fff; }
+::ng-deep path:hover {  opacity:0.9; }
+::ng-deep rect:hover {  fill:blue; }
+::ng-deep .axis {  font: 10px sans-serif; }
+::ng-deep .legend tr{    border-bottom:1px solid grey; }
+::ng-deep .legend tr:first-child{    border-top:1px solid grey; }
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.x.axis path {  display: none; }
+::ng-deep .legend{
+  display:inline-block;
+  border-collapse: collapse;
+}
+::ng-deep .legend td{
+  padding:1px 10px;
+  vertical-align:bottom;
+}
+
