@@ -4,7 +4,7 @@ font-family: "Helvetica Neue";
 
 .btnCont {
   display: flex;
-  justify-content: center;
+  padding-left: 147px;
 }
 
 .btn {
@@ -17,4 +17,9 @@ font-family: "Helvetica Neue";
 .btn:hover {
   background-color: lightgray;
   opacity: 0.6;
+}
+
+.explanation {
+  max-width: 600px;
+  padding-left: 147px;
 }

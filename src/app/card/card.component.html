@@ -2,6 +2,11 @@
 
   <app-header></app-header>
 
+  <h4 class="explanation">The portion sizes of the items in this study are displayed below. Hover over an item
+    to see the price per portion ratio and calories per portion ratio displayed by the charts in the upper-right panel.
+    Hover over the charts in the panel to see the ratio for the set of items below.
+  </h4>
+
   <div class="btnCont">
     <p (click)="show('fruit')" class="btn">Show Fruits</p>
     <p (click)="show('snacks')" class="btn">Show Snacks</p>
@@ -9,8 +14,6 @@
 
   <div *ngIf="showFruit"><app-fruits></app-fruits></div>
   <div *ngIf="showSnacks"><app-snacks></app-snacks></div>
-
-
 
   <div class="info">
     <p>*Items marked with an asterisk (*) use 1/2-cup-equivalent as the portion size. </p>
