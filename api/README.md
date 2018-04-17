@@ -1,6 +1,6 @@
 ## Nick Palmucci - Analytics Engineering Interview Task #1
  
- #Usage
+# Usage
  
  activate your python environment and run the following
  
