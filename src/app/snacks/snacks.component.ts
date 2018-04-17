@@ -13,7 +13,7 @@ export class SnacksComponent implements OnInit {
   private d3: D3;
   private charts: ChartsService;
   private data: any;
-  private fruitData: any;
+  private snackData: any;
 
   constructor(d3Service: D3Service,
               dataService: DataService,
@@ -25,11 +25,9 @@ export class SnacksComponent implements OnInit {
   }
 
   loadCharts(): any {
-    return this.data.subscribe((x: string) => {
-      Promise.resolve(JSON.parse(x)).then(data => {
-        this.fruitData = data;
-        this.charts.getCharts(this.d3, this.fruitData);
-      });
+    return this.data.subscribe((data: object) => {
+      this.snackData = data;
+      this.charts.getCharts(this.d3, this.snackData);
     });
 
   }
