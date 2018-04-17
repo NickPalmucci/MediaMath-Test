@@ -2,7 +2,7 @@
  
  #Usage
  
- active your python environment and run the following
+ activate your python environment and run the following
  
  ```
  pip install -r requirements.txt
