@@ -1,0 +1,20 @@
+.card {
+font-family: "Helvetica Neue";
+}
+
+.btnCont {
+  display: flex;
+  justify-content: center;
+}
+
+.btn {
+  font-size: large;
+  font-weight: bold;
+  padding: 2px;
+  margin-right: 15px;
+}
+
+.btn:hover {
+  background-color: lightgray;
+  opacity: 0.6;
+}
